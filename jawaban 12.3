@@ -1,0 +1,20 @@
+fileName = input("Masukkan nama file: ")
+
+try:
+    with open(fileName, 'r') as file:
+        email_counts = {}
+
+        for baris in file:
+            if baris.startswith('From '):
+                kata = baris.split()
+                if len(kata) > 1:
+                    email = kata[1]
+                    if email in email_counts:
+                        email_counts[email] += 1
+                    else:
+                        email_counts[email] = 1
+
+        print(email_counts)
+        
+except:
+    print(f"File {fileName} tidak ditemukan.")
